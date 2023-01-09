@@ -1,0 +1,22 @@
+server:
+  port: 9091
+
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://192.168.1.34:5432/Authmicroservice
+    username: postgres
+    password: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+myapplication:
+  auth:
+    ip: localhost
+    port: 9091
+  user:
+    ip: localhost
+    port: 9092
+    feignurl: http://192.168.1.34:9092/v1/dev/userprofile
