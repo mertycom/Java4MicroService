@@ -29,8 +29,8 @@ public class UserProfileController {
 
     @PostMapping(GETALL)
     public ResponseEntity<List<UserProfile>> userProfileList(@RequestBody @Valid BaseRequestDto dto){
-        Long userid = tokenGenerator.decodeToken(dto.getToken());
-        return ResponseEntity.ok(userProfileService.findAll(userid));
+        Long authid = tokenGenerator.decodeToken(dto.getToken());
+        return ResponseEntity.ok(userProfileService.findAll(authid));
     }
 
     @PostMapping(CREATE)

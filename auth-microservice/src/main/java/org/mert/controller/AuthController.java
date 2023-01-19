@@ -3,15 +3,13 @@ package org.mert.controller;
 import lombok.RequiredArgsConstructor;
 import org.mert.dto.request.DoLoginRequestDto;
 import org.mert.dto.request.RegisterRequestDto;
+import org.mert.dto.response.DoLoginResponseDto;
 import org.mert.dto.response.RegisterResponseDto;
 import org.mert.repository.entity.Auth;
 import org.mert.repository.entity.State;
 import org.mert.service.AuthService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -24,7 +22,7 @@ public class AuthController {
     private final AuthService authService;
 
     @PostMapping(DOLOGIN)
-    public ResponseEntity<String> doLogin(@RequestBody @Valid DoLoginRequestDto dto){
+    public ResponseEntity<DoLoginResponseDto> doLogin(@RequestBody @Valid DoLoginRequestDto dto){
 
         return ResponseEntity.ok(authService.doLogin(dto));
     }
@@ -33,5 +31,11 @@ public class AuthController {
     public ResponseEntity<RegisterResponseDto> register(@RequestBody @Valid RegisterRequestDto dto){
 
         return ResponseEntity.ok(authService.save(dto));
+    }
+
+    @GetMapping("/say")
+    public ResponseEntity<String> sayHello(){
+
+        return ResponseEntity.ok( "Selam arkadaşlar ben Auth");
     }
 }

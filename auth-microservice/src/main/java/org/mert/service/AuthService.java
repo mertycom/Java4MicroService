@@ -3,6 +3,7 @@ package org.mert.service;
 import org.mert.dto.request.CreateProfileRequestDto;
 import org.mert.dto.request.DoLoginRequestDto;
 import org.mert.dto.request.RegisterRequestDto;
+import org.mert.dto.response.DoLoginResponseDto;
 import org.mert.dto.response.RegisterResponseDto;
 import org.mert.exception.AuthMicroserviceExecption;
 import org.mert.exception.ErrorType;
@@ -67,7 +68,7 @@ public class AuthService extends ServiceManager<Auth,Long> {
         return  result;
     }
 
-    public String doLogin(DoLoginRequestDto dto){
+    public DoLoginResponseDto doLogin(DoLoginRequestDto dto){
 
         Optional<Auth> auth = authRepository.findOptionalByUsernameAndPassword(
                 dto.getUsername(),
@@ -75,7 +76,7 @@ public class AuthService extends ServiceManager<Auth,Long> {
         );
         if (auth.isEmpty())
             throw new AuthMicroserviceExecption(ErrorType.LOGIN_ERROR);
-        return tokenGenerator.createToken(auth.get().getId());
+        return DoLoginResponseDto.builder().token(tokenGenerator.createToken(auth.get().getId())).build();
     }
 
 }

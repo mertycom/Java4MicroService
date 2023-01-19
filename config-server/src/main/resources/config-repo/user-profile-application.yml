@@ -2,12 +2,10 @@ server:
   port: 9092
 
 spring:
-  datasource:
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://192.168.1.34:5432/Userprofilemicroservice
-    username: postgres
-    password: root
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
+  data:
+    mongodb:
+      host: localhost
+      port: 27000
+      database: Java4DB
+      username: JavaUser
+      password: Aa123456

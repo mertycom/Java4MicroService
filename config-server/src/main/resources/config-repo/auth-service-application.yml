@@ -2,6 +2,10 @@ server:
   port: 9091
 
 spring:
+  security:
+    user:
+      name: java4
+      password: root
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://192.168.1.34:5432/Authmicroservice

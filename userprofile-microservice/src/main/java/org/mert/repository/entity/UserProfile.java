@@ -17,8 +17,7 @@ import javax.persistence.*;
 @Table(name = "user_profiles")
 public class UserProfile extends BaseEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+    String id;
     Long authid;
     String username;
     String email;

@@ -36,3 +36,7 @@
     docker build --build-arg JAR_FILE=auth-microservice/build/libs/auth-microservice-v.0.0.1.jar -t java4/authmicroservice:v001 .
     docker run --name auth-microservice -p 9091:9091 -d java4/authmicroservice:v001
 
+## elastic-search
+    docker run -d --name elasticsearch --net somenetwork -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" -e ES_JAVA_OPTS="-Xms512m -Xmx1024m" elasticsearch:7.17.7
+
+

@@ -12,17 +12,17 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserProfileService extends ServiceManager<UserProfile,Long> {
+public class UserProfileService extends ServiceManager<UserProfile,String> {
 
     private final UserProfileRepository userProfileRepository;
 
 
     public List<UserProfile> findAll(Long userid) {
-
         Optional<UserProfile> userProfile = userProfileRepository.findOptionalByAuthid(userid);
         if (userProfile.isEmpty())
             throw new UserProfileMicroserviceExecption(ErrorType.UNAUTHORIZED_REQUEST);
         return findAll();
+
     }
 
     public UserProfileService(UserProfileRepository userProfileRepository) {
